@@ -1,0 +1,8 @@
+name, price, count, fabric, restock,
+purse, 149.99, 1, C, true,
+pouch, 19.9, 8, p, true,
+heart coaster, 49.9, 5, c, false, 
+top, 299.99, 1, c, false,
+jellyfish, 150, 6, c+p, true,
+coaster in pot, 49.9, 2, c, true,
+plant, 129.9, 3, a, false,
