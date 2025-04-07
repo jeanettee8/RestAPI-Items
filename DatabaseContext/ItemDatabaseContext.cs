@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RestAPI_Items.Models;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
-namespace RestAPI_Items.DatabaseController;
+namespace RestAPI_Items.DatabaseContext;
 
 public class ItemDatabaseContext : DbContext
 {

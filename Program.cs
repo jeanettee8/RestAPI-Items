@@ -1,7 +1,8 @@
+using System.Resources;
 using Microsoft.AspNetCore.Mvc;
-using RestAPI_Items.DatabaseController;
-using RestAPI_Items.ItemDatabaseContext;
+using RestAPI_Items.DatabaseContext;
 using RestAPI_Items.Models;
+using Microsoft.EntityFrameworkCore.Design;
 
 
 namespace RestAPI_Items;
@@ -43,19 +44,22 @@ public class Program
                 foreach (var item in items.Skip(1))
                 {
                     var itemData = item.Split(',',StringSplitOptions.None).ToList();
-                    while (itemData.Count<10)
+                    while (itemData.Count<6)
                     {
                         itemData.Add(string.Empty);
                     }
                     var newItem = new ItemModel()
                     {
-                        ItemName = itemData[0],
-                        ItemPrice = itemData[1],
-                        ItemCount = itemData[2],
-                        ItemFabric = itemData[3],
-                        ItemWillRestock = itemData[4]
+                        ItemName = itemData[0], ItemPrice = double.Parse(itemData[1]), ItemCount = int.Parse(itemData[2]), ItemFabric = char.Parse(itemData[3]), ItemWillRestock = bool.Parse(itemData[4])
+                        /*
+                        ItemPrice = double.TryParse(itemData[1], out var price) ? price : (double?)null,
+                        ItemCount = int.TryParse(itemData[2], out var count) ? count : (int?)null,
+                        ItemFabric = char.TryParse(itemData[3], out var fabric) ? fabric : (char?)null,
+                        ItemWillRestock = bool.TryParse(itemData[4], out var restock)*/
                     };
+                    context.Items.Add(newItem);
                 }
+                context.SaveChanges();
             }
         }
 
