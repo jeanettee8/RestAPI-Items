@@ -8,6 +8,7 @@ namespace RestAPI_Items.Models;
 public class ItemModel
 {
     [Key]
+    public int ItemID {get; set;}
     public string? ItemName {get; set;}
     public double? ItemPrice {get; set;}
     public int? ItemCount {get; set;}

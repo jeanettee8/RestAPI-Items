@@ -44,18 +44,17 @@ public class Program
                 foreach (var item in items.Skip(1))
                 {
                     var itemData = item.Split(',',StringSplitOptions.None).ToList();
-                    while (itemData.Count<6)
+                    while (itemData.Count<7)
                     {
                         itemData.Add(string.Empty);
                     }
                     var newItem = new ItemModel()
                     {
-                        ItemName = itemData[0], ItemPrice = double.Parse(itemData[1]), ItemCount = int.Parse(itemData[2]), ItemFabric = char.Parse(itemData[3]), ItemWillRestock = bool.Parse(itemData[4])
-                        /*
-                        ItemPrice = double.TryParse(itemData[1], out var price) ? price : (double?)null,
-                        ItemCount = int.TryParse(itemData[2], out var count) ? count : (int?)null,
-                        ItemFabric = char.TryParse(itemData[3], out var fabric) ? fabric : (char?)null,
-                        ItemWillRestock = bool.TryParse(itemData[4], out var restock)*/
+                        ItemName = itemData[1],
+                        ItemPrice = double.Parse(itemData[2]),
+                        ItemCount = int.Parse(itemData[3]),
+                        ItemFabric = char.Parse(itemData[4]),
+                        ItemWillRestock = bool.Parse(itemData[5])
                     };
                     context.Items.Add(newItem);
                 }
